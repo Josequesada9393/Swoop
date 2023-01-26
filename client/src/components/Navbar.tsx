@@ -16,6 +16,7 @@ import Login from './LoginButton';
 import React from 'react';
 import {User, Item} from '../Types/Types'
 import { useSelector, useDispatch } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 const pages = ['All', 'Clothes', 'Accessories', 'Home', 'Electronics', 'Hobbies', 'Freebies'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -67,6 +68,8 @@ export default function Navbar({ items, user }: {
   items: Item[];
   user: User | null
 }) {
+
+  const {isAuthenticated} = useAuth0()
 
   const appState = useSelector((state: any) => state.App)
   const dispatch = useDispatch()
@@ -126,7 +129,8 @@ export default function Navbar({ items, user }: {
 
           </Search>
           <Stack direction="row" spacing={2} >
-            <AddItem data-testid="addItemComp"  items={items}/>
+            { isAuthenticated &&
+              <AddItem data-testid="addItemComp"  items={items}/>}
             <Login data-testid = 'login'
              />
           </Stack>
