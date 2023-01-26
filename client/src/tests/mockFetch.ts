@@ -34,6 +34,7 @@ export const MockItem = {
   location: 'location3',
   image: 'image',
   _id: '129318293',
-  date_added: new Date(1609459200000), seller: MockUser
+  date_added: new Date(1609459200000), 
+  seller: 'mock@email.com'
 };
 

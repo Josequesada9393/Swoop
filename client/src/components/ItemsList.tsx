@@ -1,7 +1,7 @@
 import { Container, Grid } from '@mui/material';
 import ItemCard from './ItemCard';
 import { Item } from '../Types/Types';
-import { useSelector } from 'react-redux';
+
 
 export default function ItemList({filtereditems}: {filtereditems: Item[]}) {
 

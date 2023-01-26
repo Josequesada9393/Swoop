@@ -5,6 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import {compose, createStore} from 'redux'
 import Reducer from './reducer'
+
 import { Auth0Provider } from '@auth0/auth0-react'
 
 
@@ -16,6 +17,14 @@ declare global {
   }
 }
 
+
+// const Auth0ProviderWithHistory = ({ children }) => {
+//   const history = useHistory();
+//   const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+//   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+//   const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
+// }
+
 const store = createStore(Reducer, composeEnhancers())
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -23,9 +32,11 @@ root.render(
   <React.StrictMode>
     <Auth0Provider
       domain={'dev-sydr5gofiqca2n6a.us.auth0.com'}
-      clientId={'gv5w1xrNQJAi0AJMyLkIB87QlSjYDO0a'}
+      clientId={'5CcwEuZpj1VciSC8b70jbtEhc3TFAypM'}
       authorizationParams={{
-      redirect_uri: window.location.origin,
+        redirect_uri: window.location.origin, 
+        audience:"this is a unique identifier",
+        scope: 'openid profile email'
       }}
     >
       <Provider store={store}>

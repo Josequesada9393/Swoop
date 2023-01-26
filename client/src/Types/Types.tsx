@@ -17,7 +17,7 @@ export interface Item {
     location: string
     image: string
     date_added: Date
-    seller: User
+    seller: string
 }
 
 export interface ExpandProps {

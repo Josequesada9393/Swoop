@@ -38,7 +38,7 @@ const itemSchema = new mongoose.Schema({
         default: Date.now
     },
     seller: {
-      type: mongoose.Types.ObjectId,
+      type: String,
       ref: 'User'
   },
 });

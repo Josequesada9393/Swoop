@@ -4,10 +4,13 @@ const baseURL = "http://localhost:3006"
 
 
 
-export const addItem = async (data: any) => {
+export const addItem = async (data: any, token:string) => {
   return await fetch(`${baseURL}/items`,{
     method: 'POST',
     body: data,
+    headers: {
+      authorization: `Bearer ${token}`
+    },
     credentials: 'include',
     mode:'cors'
   })

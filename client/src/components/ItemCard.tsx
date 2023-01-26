@@ -64,7 +64,7 @@ export default function ItemCard({ item }: {item: Item}) {
         <Collapse in={itemCardState.expanded} timeout="auto" unmountOnExit>
         <CardContent>
         <Typography data-testid="seller" paragraph>
-            Seller: {item.seller ? item.seller.firstName + ' ' + item.seller.lastName[0] : 'Dana C'}
+            Seller: {item.seller}
           </Typography>
           <Typography paragraph>
             Location: {item.location}

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { ConnectOptions } from 'mongoose';
 
 const DB_NAME = 'swoopDB2'
-const DB_PORT = '27017'
+const DB_PORT = '127.0.0.1'
 //mongodb://127.0.0.1/
 mongoose.connect(
   `mongodb://127.0.0.1/${DB_NAME}`,
