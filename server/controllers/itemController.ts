@@ -1,6 +1,7 @@
 import Item from '../models/item'
-// const { Request, Response, NextFunction } =  require('express');
+
 import { Request, Response } from "express";
+
 
 
 export const getItems = async (req:Request, res:Response) => {
@@ -33,6 +34,14 @@ export const getItemById = async (req:Request, res:Response) => {
 
 export const createItem = async (req:any, res:Response) => {
   try {
+    const accessToken = await req.headers.authorization.split(' ')[1]
+    const response = await fetch('https://dev-sydr5gofiqca2n6a.us.auth0.com/userinfo', {
+      headers: {
+        authorization: `Bearer ${accessToken}`
+      }
+    });
+    const userInfo = await response.json()
+
     const newItem = await Item.create({
       title: req.body.title,
       description: req.body.description,
@@ -42,8 +51,9 @@ export const createItem = async (req:any, res:Response) => {
       location: req.body.location,
       image: req.file ? req.file.path : undefined,
       date_added: Date.now(),
+      seller: userInfo.email
     });
-    res.status(201).send(newItem);
+    res.status(201).json(newItem);
   } catch (e) {
     res.status(500);
   }

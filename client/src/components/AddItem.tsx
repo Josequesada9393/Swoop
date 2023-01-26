@@ -16,12 +16,15 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import React, {useState} from 'react'
 import { Item } from "../Types/Types";
 import { useDispatch, useSelector } from "react-redux";
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function AddItem({ items }: {items: Item[]}) {
 
   const dispatch = useDispatch();
 
   const addItemState = useSelector((state: any) => state.addItem);
+
+  const {getAccessTokenSilently} = useAuth0()
 
   const [image, setImage]:any = useState<string | File>("")
 
@@ -56,8 +59,8 @@ export default function AddItem({ items }: {items: Item[]}) {
 
   const postItem = async (data: any) => {
     try {
-      const post = await addItem(data);
-      console.log(post)
+      const token = await getAccessTokenSilently()
+      const post = await addItem(data, token);
       dispatch({ type: 'APP_ITEMS', payload: [...items, post] });
       dispatch({ type: 'APP_FILTERED_ITEMS', payload: [...items, post] });
     } catch (e) {

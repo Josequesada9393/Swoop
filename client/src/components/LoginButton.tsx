@@ -5,15 +5,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function LoginButton() {
 
-const {loginWithRedirect, logout, isAuthenticated} = useAuth0()
+  const {
+    loginWithRedirect,
+    logout,
+    isAuthenticated } = useAuth0()
 
 
   return (
     <div>
       {!isAuthenticated && (
+        <>
       <Button variant="contained" sx={{ display: { xs: 'none', md: 'block' } }} onClick={() => loginWithRedirect()} data-testid='Loginbutton'>
         Log in
-      </Button>
+        </Button>
+        </>
       )}
       {isAuthenticated && (
       <Button variant="contained" sx={{ display: { xs: 'none', md: 'block' } }} onClick={() => logout()} data-testid='LogoutButton'>
