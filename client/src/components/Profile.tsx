@@ -6,7 +6,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 
 import ListItemText from '@mui/material/ListItemText';
-import { Item } from "../Types/Types";
+import { Item, wholeState } from "../Types/Types";
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Profile({items}: {items: Item[]}) {
   const dispatch = useDispatch()
 
-  const profileState = useSelector((state: any) => state.Profile)
+  const profileState = useSelector((state: wholeState) => state.Profile)
 
   useEffect(() => {
     getUserById('63c983992fed3945324e68f9')

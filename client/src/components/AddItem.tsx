@@ -14,7 +14,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import React, {useState} from 'react'
-import { Item } from "../Types/Types";
+import { Item, wholeState } from "../Types/Types";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -22,11 +22,11 @@ export default function AddItem({ items }: {items: Item[]}) {
 
   const dispatch = useDispatch();
 
-  const addItemState = useSelector((state: any) => state.addItem);
+  const addItemState = useSelector((state: wholeState) => state.addItem);
 
   const {getAccessTokenSilently} = useAuth0()
 
-  const [image, setImage]:any = useState<string | File>("")
+  const [image, setImage] = useState<string | File>("")
 
   const handleClickOpen = () => {
     dispatch({type: 'ADDITEM_OPEN'});
@@ -57,7 +57,7 @@ export default function AddItem({ items }: {items: Item[]}) {
   };
 
 
-  const postItem = async (data: any) => {
+  const postItem = async (data: FormData) => {
     try {
       const token = await getAccessTokenSilently()
       const post = await addItem(data, token);
@@ -78,7 +78,7 @@ export default function AddItem({ items }: {items: Item[]}) {
       <Button id="sellNow" variant="contained" startIcon={<AddIcon />} sx={{ display: { xs: 'none', md: 'flex', background: '#E25F1C' } }} onClick={handleClickOpen}>
         Sell Now
       </Button>
-      <Dialog open={addItemState.open} onClose={handleClose} data-testid='closebutton' >
+      <Dialog open={addItemState.openAddItem} onClose={handleClose} data-testid='closebutton' >
         <DialogActions>
           <IconButton sx={{ padding: 0 }} onClick={handleClose} >
             <CloseIcon sx={{ fontSize: '1.3em' }} />

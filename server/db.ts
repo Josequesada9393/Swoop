@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import { ConnectOptions } from 'mongoose';
 
-const DB_NAME = 'swoopDB2'
-const DB_PORT = '127.0.0.1'
+const DB_NAME = process.env.DB_NAME
+const DB_PORT = process.env.DB_PORT
 
 mongoose.connect(
-  `mongodb://127.0.0.1/${DB_NAME}`,
+  `${DB_PORT}${DB_NAME}`,
   (err) => {
     if (err) {
       console.log(`Sorry, something went wrong! ${err}`);

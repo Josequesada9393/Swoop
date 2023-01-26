@@ -4,7 +4,7 @@ import multer from 'multer'
 import SharpMulter from 'sharp-multer'
 
 
-const fileFilter = (req: Request, file, cb: (error, success)=>any) => {
+const fileFilter = (req: Request, file, cb: (error: Error, success:boolean)=>any) => {
   if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'|| file.mimetype === 'image/jpg') {
     cb(null, true)
   } else {

@@ -5,8 +5,8 @@ import App from './App';
 import { Provider } from 'react-redux';
 import {compose, createStore} from 'redux'
 import Reducer from './reducer'
-
 import { Auth0Provider } from '@auth0/auth0-react'
+
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

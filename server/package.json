@@ -11,9 +11,11 @@
   "author": "Dana C",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@types/jest": "^29.4.0",
     "cloudinary": "^1.33.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-jwt": "^8.3.0",
     "firebase": "^9.15.0",

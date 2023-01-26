@@ -1,6 +1,6 @@
 import AddItem from '../components/AddItem';
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from '../App';
+
 import {MockItem} from './mockFetch';
 
 

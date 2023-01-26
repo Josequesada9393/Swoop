@@ -14,7 +14,7 @@ import { Menu, MenuItem, Stack } from '@mui/material';
 import AddItem from './AddItem';
 import Login from './LoginButton';
 import React from 'react';
-import {User, Item} from '../Types/Types'
+import {wholeState, Item} from '../Types/Types'
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 const pages = ['All', 'Clothes', 'Accessories', 'Home', 'Electronics', 'Hobbies', 'Freebies'];
@@ -64,14 +64,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Navbar({ items, user }: {
+export default function Navbar({ items }: {
   items: Item[];
-  user: User | null
 }) {
 
   const {isAuthenticated} = useAuth0()
 
-  const appState = useSelector((state: any) => state.App)
+  const appState = useSelector((state: wholeState) => state.App)
   const dispatch = useDispatch()
 
   const [anchorElNav, setAnchorElNav] = useState<null | EventTarget>(null);
@@ -93,7 +92,7 @@ export default function Navbar({ items, user }: {
       dispatch({ type: 'APP_FILTERED_ITEMS', payload: filtered })
     }
   }
-  
+
   const handleFilterCategory = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const target = e.target as HTMLButtonElement

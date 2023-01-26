@@ -1,13 +1,7 @@
-import { combineReducers } from "redux"
+import { combineReducers, AnyAction } from "redux"
 
-const initialStateRegistration = {
-  open: true,
-  password: '',
-  phoneNumber: '',
-  firstName: '',
-  Email: '',
-  lastName: ''
-}
+import { addItemState, AppState, CardState, ProfileState } from "./Types/Types"
+
 const initialAddItemState = {
   title: '',
   description: '',
@@ -15,7 +9,7 @@ const initialAddItemState = {
   quantity:'',
   location:'',
   category:'',
-  openAddItem:''
+  openAddItem:false
 }
 
 const initialAppState = {
@@ -36,7 +30,7 @@ const InitialProfileState = {
   }
 }
 
-const ItemCard  = (state:any=initialItemCardState, action:any)=> {
+const ItemCard = (state: CardState = initialItemCardState, action: AnyAction)=> {
   switch (action.type) {
     case 'EXPAND':
       return {...state, expanded: !state.expanded}
@@ -45,7 +39,7 @@ const ItemCard  = (state:any=initialItemCardState, action:any)=> {
   }
 }
 
-const Profile = (state:any = InitialProfileState, action:any) => {
+const Profile = (state:ProfileState = InitialProfileState, action:AnyAction) => {
   switch (action.type) {
     case 'PROFILE_USER':
       return {...state, User: action.payload}
@@ -54,7 +48,7 @@ const Profile = (state:any = InitialProfileState, action:any) => {
   }
 }
 
-const App = (state:any=initialAppState, action:any) => {
+const App = (state:AppState=initialAppState, action:AnyAction) => {
   switch (action.type) {
     case 'APP_ITEMS':
       return { ...state, items: action.payload };
@@ -65,7 +59,7 @@ const App = (state:any=initialAppState, action:any) => {
   }
 }
 
-const addItem = (state:any = initialAddItemState, action:any) => {
+const addItem = (state:addItemState = initialAddItemState, action:AnyAction) => {
   switch (action.type) {
     case 'ADDITEM_TITLE':
       return {...state, title: action.payload}
@@ -80,7 +74,7 @@ const addItem = (state:any = initialAddItemState, action:any) => {
     case 'ADDITEM_CATEGORY':
       return {...state, category: action.payload}
     case 'ADDITEM_OPEN':
-      return {...state, open: !state.open}
+      return {...state, openAdditem: !state.openAddItem}
     default:
       return {...state};
   }

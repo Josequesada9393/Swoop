@@ -6,7 +6,7 @@ import {  Button, CardActionArea, CardActions, Collapse, IconButton, styled } fr
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import moment from 'moment'
-import { Item, ExpandProps } from '../Types/Types';
+import { Item, ExpandProps, wholeState } from '../Types/Types';
 import { useDispatch, useSelector } from 'react-redux'
 
 const ExpandMore = styled((props: ExpandProps) => {
@@ -22,7 +22,7 @@ const ExpandMore = styled((props: ExpandProps) => {
 
 export default function ItemCard({ item }: {item: Item}) {
   const dispatch = useDispatch()
-  const itemCardState = useSelector((state:any)=>state.ItemCard)
+  const itemCardState = useSelector((state:wholeState)=>state.ItemCard)
 
   const handleExpandClick = () => {
     dispatch({type:'EXPAND'});

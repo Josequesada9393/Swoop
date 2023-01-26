@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import LoginButton from './components/LoginButton';
 import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-
+import { wholeState } from "./Types/Types";
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -37,7 +37,7 @@ function App() {
   const { isLoading, error } = useAuth0();
 
   const dispatch = useDispatch();
-  const appState = useSelector((state: any) => state.App)
+  const appState = useSelector((state: wholeState) => state.App)
 
   useEffect(() => {
     const getData = async () => {
@@ -69,7 +69,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar items={appState.items} user={appState.user} />
+      <Navbar items={appState.items} />
        {error && <p>Authentication Error</p>}
         {!error && isLoading && <p>Loading...</p>}
 

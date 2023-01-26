@@ -32,7 +32,7 @@ export const getItemById = async (req:Request, res:Response) => {
   }
 };
 
-export const createItem = async (req:any, res:Response) => {
+export const createItem = async (req: any, res:Response) => {
   try {
     const accessToken = await req.headers.authorization.split(' ')[1]
     const response = await fetch('https://dev-sydr5gofiqca2n6a.us.auth0.com/userinfo', {
