@@ -20,7 +20,6 @@ test('renders sell now button', () => {
 
 test('renders login button', () => {
    render(<Navbar items={[MockItem]} user={MockUser} />);
-//we need to have another look at this
   const login = screen.getAllByText('Log In/ Register', {exact: false})
   expect(login[0]).toBeInTheDocument()
 

@@ -3,13 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../App';
 import {MockItem} from './mockFetch';
 
-// beforeEach(() => {
-//    jest.spyOn(window, "fetch").mockImplementation(mockFetch);
-// })
 
-// afterEach(() => {
-//    jest.restoreAllMocks()
-// });
 
 
 jest.mock('../services.tsx', () => ({

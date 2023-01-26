@@ -1,10 +1,9 @@
 
-// const route = require('express').Route();
 import express from 'express'
 const route = express.Router()
 import userController from './controllers/userController';
 import itemController from './controllers/itemController';
-// const authController = require('./controllers/authController');
+
 import orderController from './controllers/orderController';
 import upload from './middleware/upload'
 
@@ -22,6 +21,6 @@ route.get('/items/:id', itemController.getItemById);
 
 route.get('/order/:id',orderController.getOrder);
 route.post('/order/:id',orderController.checkout);
-// add cart & checkout routees???
+
 
 export default route;

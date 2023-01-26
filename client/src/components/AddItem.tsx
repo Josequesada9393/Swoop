@@ -61,7 +61,6 @@ export default function AddItem({ items }: {items: Item[]}) {
     try {
       const token = await getAccessTokenSilently()
       const post = await addItem(data, token);
-      console.log(post)
       dispatch({ type: 'APP_ITEMS', payload: [...items, post] });
       dispatch({ type: 'APP_FILTERED_ITEMS', payload: [...items, post] });
     } catch (e) {

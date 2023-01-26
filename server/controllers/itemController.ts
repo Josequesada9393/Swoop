@@ -1,7 +1,7 @@
 import Item from '../models/item'
-// const { Request, Response, NextFunction } =  require('express');
+
 import { Request, Response } from "express";
-import axios from 'axios';
+
 
 
 export const getItems = async (req:Request, res:Response) => {

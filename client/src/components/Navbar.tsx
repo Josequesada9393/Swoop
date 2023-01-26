@@ -93,7 +93,7 @@ export default function Navbar({ items, user }: {
       dispatch({ type: 'APP_FILTERED_ITEMS', payload: filtered })
     }
   }
-  // BROKEN NEEDS FIX
+  
   const handleFilterCategory = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const target = e.target as HTMLButtonElement

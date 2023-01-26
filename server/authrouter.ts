@@ -1,5 +1,4 @@
 
-// const authRouter = require('express').authRouter();
 import express from 'express'
 const authRouter = express.Router()
 
@@ -13,6 +12,6 @@ authRouter.post('/items',  upload.single('image'), itemController.createItem)
 authRouter.put('/editItem/:id', upload.single('image'), itemController.updateItem)
 authRouter.delete('/items/:id', itemController.deleteItem);
 
-// add cart & checkout authRouteres???
+
 
 export default authRouter;
