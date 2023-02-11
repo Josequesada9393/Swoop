@@ -31,11 +31,6 @@ The pictures uploaded on the Browser will be saved to Server/uploads directory
 
 ```
 
-Tech Stack
-
-Material UI
-Multer
-
 ## Tech Stack
 * [React](https://reactjs.org/)
 * [NodeJS](https://nodejs.org/en/)
